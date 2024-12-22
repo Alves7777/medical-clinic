@@ -33,7 +33,7 @@ class AuthService
         if (!$doctor || !Hash::check($credentials['password'], $doctor->password)) {
             return [
                 'success' => false,
-                'message' => 'Invalid credentials',
+                'message' => 'Credenciais inválidas',
             ];
         }
 
@@ -49,7 +49,11 @@ class AuthService
 
     public function logout($doctor): void
     {
-        $doctor->currentAccessToken()->delete();
+        if ($doctor && $doctor->currentAccessToken()) {
+            $doctor->currentAccessToken()->delete();
+        } else {
+            throw new \Exception('Usuário não autenticado ou token inválido', 401);
+        }
     }
 
     public function me($doctor): array

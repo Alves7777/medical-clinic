@@ -25,7 +25,7 @@ class AuthController extends Controller
     {
         try {
             $data = $this->authService->register($request->validated());
-            return $this->apiResponseService->success($data, 'User registered successfully');
+            return $this->apiResponseService->success($data, 'Usuário registrado com sucesso');
         } catch (\Exception $e) {
             return $this->apiResponseService->fail($e->getMessage(), $e->getCode());
         }
@@ -40,7 +40,7 @@ class AuthController extends Controller
                 return $this->apiResponseService->fail($data['message'], 401);
             }
 
-            return $this->apiResponseService->success($data, 'Logged in successfully');
+            return $this->apiResponseService->success($data, 'Conectado com sucesso');
         } catch (\Exception $e) {
             return $this->apiResponseService->fail($e->getMessage(), $e->getCode());
         }
@@ -49,8 +49,9 @@ class AuthController extends Controller
     public function logout(Request $request): JsonResponse
     {
         try {
-            $this->authService->logout($request->user());
-            return $this->apiResponseService->success([], 'Logged out successfully');
+            $doctor = auth('api')->user();
+            $this->authService->logout($doctor);
+            return $this->apiResponseService->success([], 'Desconectado com sucesso');
         } catch (\Exception $e) {
             return $this->apiResponseService->fail($e->getMessage(), $e->getCode());
         }
@@ -59,8 +60,9 @@ class AuthController extends Controller
     public function me(Request $request): JsonResponse
     {
         try {
-            $data = $this->authService->me($request->user());
-            return $this->apiResponseService->success($data, 'User data retrieved successfully');
+            $doctor = auth('api')->user();
+            $data = $this->authService->me($doctor);
+            return $this->apiResponseService->success($data, 'Dados do usuário recuperados com sucesso');
         } catch (\Exception $e) {
             return $this->apiResponseService->fail($e->getMessage(), $e->getCode());
         }
