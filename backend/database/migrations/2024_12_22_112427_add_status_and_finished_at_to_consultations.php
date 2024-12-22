@@ -8,10 +8,10 @@ class AddStatusAndFinishedAtToConsultations extends Migration
 {
     public function up()
     {
-//        Schema::table('consultations', function (Blueprint $table) {
-//            $table->enum('status', ['pending', 'completed'])->default('pending');
-//            $table->timestamp('finished_at')->nullable();
-//        });
+        Schema::table('consultations', function (Blueprint $table) {
+            $table->enum('status', ['pending', 'completed'])->default('pending');
+            $table->timestamp('finished_at')->nullable();
+        });
     }
 
     public function down()
