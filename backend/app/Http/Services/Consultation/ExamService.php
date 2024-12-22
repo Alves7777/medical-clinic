@@ -13,6 +13,11 @@ class ExamService
         $this->examRepository = $examRepository;
     }
 
+    public function get($consultationId)
+    {
+        return $this->examRepository->find($consultationId);
+    }
+
     public function create(array $data)
     {
         return $this->examRepository->create($data);
