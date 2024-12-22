@@ -2,13 +2,13 @@
 
 namespace App\Http\Repositories\Consultation;
 
-use App\Models\Exam;
+use App\Models\Prescription;
 
-class ExamRepository
+class PrescriptionRepository
 {
-    private Exam $model;
+    private Prescription $model;
 
-    public function __construct(Exam $model)
+    public function __construct(Prescription $model)
     {
         $this->model = $model;
     }

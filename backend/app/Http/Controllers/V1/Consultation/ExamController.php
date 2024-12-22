@@ -20,6 +20,16 @@ class ExamController extends Controller
         $this->apiResponseService = $apiResponseService;
     }
 
+    public function index($consultationId): JsonResponse
+    {
+        try {
+            $doctors = $this->examService->get($consultationId);
+            return $this->apiResponseService->success($doctors, 'Exame listado com sucesso', 200);
+        } catch (Exception $e) {
+            return $this->apiResponseService->error($e->getMessage(), $e->getCode());
+        }
+    }
+
     public function store(ExamRequest $request): JsonResponse
     {
         try {
