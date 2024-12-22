@@ -26,7 +26,7 @@ class DoctorController extends Controller
     {
         try {
             $doctors = $this->doctorService->get();
-            return $this->apiResponseService->success($doctors, 'Doctors listed successfully', 200);
+            return $this->apiResponseService->success($doctors, 'Médicos listados com sucesso', 200);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
@@ -36,7 +36,7 @@ class DoctorController extends Controller
     {
         try {
             $doctor = $this->doctorService->create($request->validated());
-            return $this->apiResponseService->success($doctor, 'Doctor created successfully', 201);
+            return $this->apiResponseService->success($doctor, 'Doutor criado com sucesso', 201);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
@@ -46,11 +46,11 @@ class DoctorController extends Controller
     {
         try {
             $doctor = $this->doctorService->show($id);
-            return $this->apiResponseService->success($doctor, 'Doctor retrieved successfully', 200);
+            return $this->apiResponseService->success($doctor, 'Médico recuperado com sucesso', 200);
         } catch (ModelNotFoundException $e) {
-            return $this->apiResponseService->fail('Doctor not found', 404);
+            return $this->apiResponseService->fail('Médico não encontrado', 404);
         } catch (Exception $e) {
-            return $this->apiResponseService->fail($e->getMessage(), $e->getCode());
+            return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
     }
 
@@ -58,11 +58,11 @@ class DoctorController extends Controller
     {
         try {
             $doctor = $this->doctorService->update($id, $request->validated());
-            return $this->apiResponseService->success($doctor, 'Doctor updated successfully', 200);
+            return $this->apiResponseService->success($doctor, 'Doutor atualizado com sucesso', 200);
         } catch (ModelNotFoundException $e) {
-            return $this->apiResponseService->fail('Doctor not found', 404);
+            return $this->apiResponseService->fail('Médico não encontrado', 404);
         } catch (Exception $e) {
-            return $this->apiResponseService->fail($e->getMessage(), $e->getCode());
+            return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
     }
 
@@ -70,7 +70,7 @@ class DoctorController extends Controller
     {
         try {
             $this->doctorService->delete($id);
-            return $this->apiResponseService->success(null, 'Doctor deleted successfully', 204);
+            return $this->apiResponseService->success(null, 'Doutor excluído com sucesso', 204);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }

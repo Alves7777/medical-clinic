@@ -25,7 +25,7 @@ class ConsultationController extends Controller
     {
         try {
             $doctors = $this->consultationService->get($doctorId);
-            return $this->apiResponseService->success($doctors, 'Consultation listed successfully', 200);
+            return $this->apiResponseService->success($doctors, 'Consulta listada com sucesso', 200);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
@@ -35,7 +35,7 @@ class ConsultationController extends Controller
     {
         try {
             $doctor = $this->consultationService->create($request->validated());
-            return $this->apiResponseService->success($doctor, 'Consultation created successfully', 201);
+            return $this->apiResponseService->success($doctor, 'Consulta criada com sucesso', 201);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }

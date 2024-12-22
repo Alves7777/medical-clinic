@@ -43,7 +43,7 @@ return [
 
         'api' => [
             'driver' => 'sanctum',
-            'provider' => 'users',
+            'provider' => 'doctors',
             'hash' => false,
         ],
     ],
@@ -68,13 +68,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Doctor::class,
+        ],
     ],
 
     /*
