@@ -4,6 +4,8 @@ namespace App\Http\Services\Consultation;
 
 
 use App\Http\Repositories\Consultation\ConsultationRepository;
+use Carbon\Carbon;
+use Exception;
 
 class ConsultationService
 {
@@ -22,5 +24,20 @@ class ConsultationService
     public function get($doctorId)
     {
         return $this->consultationRepository->find($doctorId);
+    }
+
+    public function completeConsultation(int $consultationId)
+    {
+        $consultation = $this->consultationRepository->findById($consultationId);
+
+        if (!$consultation) {
+            throw new Exception("Consulta não existe.", 404);
+        }
+
+        $consultation->status = 'completed';
+        $consultation->finished_at = Carbon::now();
+        $consultation->save();
+
+        return $consultation;
     }
 }

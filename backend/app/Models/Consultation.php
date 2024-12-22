@@ -15,6 +15,8 @@ class Consultation extends Model
         'patient_age',
         'doctor_id',
         'consultation_date',
+        'status',
+        'finished_at',
     ];
 
     public function doctor(): BelongsTo

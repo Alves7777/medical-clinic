@@ -21,4 +21,9 @@ class ConsultationRepository
     {
         return $this->model->where('doctor_id', $doctorId)->get();
     }
+
+    public function findById(int $id)
+    {
+        return $this->model->find($id);
+    }
 }
