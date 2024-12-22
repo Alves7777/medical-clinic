@@ -12,6 +12,7 @@ class ConsultationRepository
     {
         $this->model = $model;
     }
+
     public function create(array $data)
     {
         return $this->model->create($data);
@@ -25,5 +26,13 @@ class ConsultationRepository
     public function findById(int $id)
     {
         return $this->model->find($id);
+    }
+
+    public function getHistory($doctorId)
+    {
+        return $this->model->where('doctor_id', $doctorId)
+            ->where('status', 'completed')
+            ->with('exams')
+            ->get();
     }
 }
