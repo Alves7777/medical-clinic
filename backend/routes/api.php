@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/consultations/{consultation_id}/exams', [ExamController::class, 'index']);
     Route::post('/consultations/{consultation_id}/exams', [ExamController::class, 'store']);
     Route::post('/consultation/complete', [ConsultationController::class, 'complete']);
+    Route::get('/consultations/history/{doctorId}', [ConsultationController::class, 'history']);
 
     Route::get('/prescriptions/{consultation_id}', [PrescriptionController::class, 'index']);
     Route::post('/prescriptions', [PrescriptionController::class, 'store']);

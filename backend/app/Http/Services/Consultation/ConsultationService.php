@@ -36,8 +36,22 @@ class ConsultationService
 
         $consultation->status = 'completed';
         $consultation->finished_at = Carbon::now();
+        $consultation->consultation_duration = $consultation->finished_at->diffInMinutes($consultation->consultation_date);
         $consultation->save();
 
         return $consultation;
+    }
+
+    public function getHistory($doctorId)
+    {
+        $consultations = $this->consultationRepository->getHistory($doctorId);
+
+        $consultations->each(function ($consultation) {
+            if ($consultation->finished_at) {
+                $consultation->consultation_duration = $consultation->finished_at->diffInMinutes($consultation->consultation_date);
+            }
+        });
+
+        return $consultations;
     }
 }

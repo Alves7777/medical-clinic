@@ -24,8 +24,8 @@ class ConsultationController extends Controller
     public function index($doctorId): JsonResponse
     {
         try {
-            $doctors = $this->consultationService->get($doctorId);
-            return $this->apiResponseService->success($doctors, 'Consulta listada com sucesso', 200);
+            $consultations = $this->consultationService->get($doctorId);
+            return $this->apiResponseService->success($consultations, 'Consulta listada com sucesso', 200);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
@@ -34,8 +34,8 @@ class ConsultationController extends Controller
     public function store(ConsultationRequest $request): JsonResponse
     {
         try {
-            $doctor = $this->consultationService->create($request->validated());
-            return $this->apiResponseService->success($doctor, 'Consulta criada com sucesso', 201);
+            $consultation = $this->consultationService->create($request->validated());
+            return $this->apiResponseService->success($consultation, 'Consulta criada com sucesso', 201);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
@@ -46,6 +46,16 @@ class ConsultationController extends Controller
         try {
             $consultation = $this->consultationService->completeConsultation($request->validated()['consultation_id']);
             return $this->apiResponseService->success($consultation, 'Consulta concluída com sucesso', 200);
+        } catch (Exception $e) {
+            return $this->apiResponseService->error($e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function history($doctorId): JsonResponse
+    {
+        try {
+            $history = $this->consultationService->getHistory($doctorId);
+            return $this->apiResponseService->success($history, 'Histórico de atendimentos listado com sucesso', 200);
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage(), $e->getCode());
         }
