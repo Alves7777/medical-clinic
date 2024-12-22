@@ -36,7 +36,7 @@ class ConsultationService
 
         $consultation->status = 'completed';
         $consultation->finished_at = Carbon::now();
-        $consultation->consultation_duration = $consultation->finished_at->diffInMinutes($consultation->consultation_date);
+        $consultation->consultation_duration = (int) $consultation->finished_at->diffInMinutes($consultation->consultation_date);
         $consultation->save();
 
         return $consultation;
@@ -48,7 +48,7 @@ class ConsultationService
 
         $consultations->each(function ($consultation) {
             if ($consultation->finished_at) {
-                $consultation->consultation_duration = $consultation->finished_at->diffInMinutes($consultation->consultation_date);
+                $consultation->consultation_duration = (int) $consultation->finished_at->diffInMinutes($consultation->consultation_date);
             }
         });
 

@@ -9,7 +9,7 @@ class CompleteConsultationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'consultation_id' => 'required|exists:consultations,id',
+            'consultation_id' => 'required|exists:consultations,id,status,pending',
         ];
     }
 }
