@@ -4,13 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Clinic</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<h1>Medical Clinic</h1>
-<button id="fetchData">Fetch Data</button>
-<div id="output"></div>
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="text-primary">Sistema de Consultas Médicas</h1>
+        <p class="lead">Bem-vindo à Clínica Médica</p>
+    </div>
 
-<script src="script.js"></script>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">Acesso ao Sistema</h4>
+                    <p class="card-text">Faça login para acessar o sistema de consultas médicas.</p>
+                    <a href="view/login.html" class="btn btn-primary btn-sm btn-block">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <p>Se você é novo por aqui, entre em contato com a administração para obter seu acesso.</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>

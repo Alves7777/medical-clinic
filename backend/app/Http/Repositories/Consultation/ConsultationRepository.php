@@ -31,7 +31,6 @@ class ConsultationRepository
     public function getHistory($doctorId)
     {
         return $this->model->where('doctor_id', $doctorId)
-            ->where('status', 'completed')
             ->with('exams')
             ->get();
     }
