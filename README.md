@@ -39,7 +39,7 @@ Para iniciar o backend com Laravel, siga os passos abaixo:
 1. Navegue até o diretório do backend:
 
     ```bash
-    cd backend
+        cd medical-consultation-system
     ```
 
 2. Construa e inicie os containers Docker:
@@ -91,24 +91,8 @@ Para o frontend, siga os seguintes passos:
 1. Navegue até o diretório do frontend:
 
     ```bash
-    cd frontend
+    cd frontend (já subiu pelo docker na pasta raiz (cd medical-consultation-system))
     ```
-
-2. Instale as dependências do Node.js (caso esteja utilizando React.js):
-
-    ```bash
-    npm install
-    ```
-
-3. Inicie o servidor de desenvolvimento para o frontend:
-
-    ```bash
-    npm start
-    ```
-
-   O frontend estará acessível em `http://localhost:3000`.
-
----
 
 ## 4. Configuração do Banco de Dados
 
