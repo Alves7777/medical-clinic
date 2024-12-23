@@ -1,7 +1,5 @@
 # Sistema de Consulta Médica
 
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-
 ## Sobre o Projeto
 
 Este é um sistema de consulta médica desenvolvido com **Laravel** no backend e **React.js** ou **JS puro** no frontend. O sistema permite que médicos realizem o login, atendam pacientes, prescrevam exames e receitas, e consultem o histórico dos atendimentos realizados.
