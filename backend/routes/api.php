@@ -23,14 +23,17 @@ Route::prefix('auth')->group(function () {
     Route::post('me', [AuthController::class, 'me']);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::resource('doctors', DoctorController::class);
+});
 
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('doctors/{doctor_id}/consultations', [ConsultationController::class, 'index']);
     Route::post('consultations', [ConsultationController::class, 'store']);
 
     Route::get('/consultations/{consultation_id}/exams', [ExamController::class, 'index']);
     Route::post('/consultations/{consultation_id}/exams', [ExamController::class, 'store']);
+
     Route::post('/consultation/complete', [ConsultationController::class, 'complete']);
     Route::get('/consultations/history/{doctorId}', [ConsultationController::class, 'history']);
 
